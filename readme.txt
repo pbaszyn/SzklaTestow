@@ -1,0 +1,1 @@
+# Java code created during course "Practical unit test course" in Szkoła Testów - https://szkolatestow.online/
