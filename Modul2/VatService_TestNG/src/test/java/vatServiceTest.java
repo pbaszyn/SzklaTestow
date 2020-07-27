@@ -2,6 +2,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import static org.testng.Assert.assertEquals;
 
@@ -12,7 +13,7 @@ public class vatServiceTest {
     @Test
     void shouldReturnGrossPriceWithDefaultVat() {
         //given
-        product = new Product("bouts", new BigDecimal("10"));
+        product = generateProduct("10");
 
         //when
         BigDecimal result = vatService.getGrossPrice4DefVatValue(product);
@@ -24,7 +25,7 @@ public class vatServiceTest {
     @Test
     void shouldReturnGrossPrice4GivenVat() throws ToHighVatValueException {
         //given
-        product = new Product("potatoes", new BigDecimal("20"));
+        product = generateProduct("20");
 
         //when
         BigDecimal result = vatService.getGrossPrice4DefVatValue(product);
@@ -36,10 +37,13 @@ public class vatServiceTest {
     @Test(expectedExceptions = ToHighVatValueException.class)
     void shouldThrowExceptionWhenVATisEqualOrBiggerThanONE() throws ToHighVatValueException {
         //given
-        product = new Product("potatoes", new BigDecimal("20"));
+        product = generateProduct("20");
 
         //then
         vatService.getGrossPrise4GivenVat(product,BigDecimal.ONE);
+    }
+    private Product generateProduct(String netPrice){
+        return new Product(UUID.randomUUID(),new BigDecimal(netPrice));
     }
 
     @BeforeMethod
