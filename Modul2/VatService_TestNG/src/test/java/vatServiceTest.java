@@ -1,19 +1,15 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.testng.Assert.assertEquals;
 
 public class vatServiceTest {
     private VatService vatService;
     private Product product;
 
-
     @Test
-    @DisplayName("Should return gross price for default VAT value")
     void shouldReturnGrossPriceWithDefaultVat() {
         //given
         product = new Product("bouts", new BigDecimal("10"));
@@ -26,7 +22,6 @@ public class vatServiceTest {
     }
 
     @Test
-    @DisplayName("Should return gross price for 8% VAT value")
     void shouldReturnGrossPrice4GivenVat() throws ToHighVatValueException {
         //given
         product = new Product("potatoes", new BigDecimal("20"));
@@ -38,20 +33,16 @@ public class vatServiceTest {
         assertEquals(new BigDecimal("21.60"),vatService.getGrossPrise4GivenVat(product,new BigDecimal("0.08")));
     }
 
-    @Test
-    @DisplayName("Should throw Excepion when VAT value is Equal or Bigger than ONE")
-    void shouldThrowExceptionWhenVATisEqualOrBiggerThanONE() {
+    @Test(expectedExceptions = ToHighVatValueException.class)
+    void shouldThrowExceptionWhenVATisEqualOrBiggerThanONE() throws ToHighVatValueException {
         //given
         product = new Product("potatoes", new BigDecimal("20"));
 
         //then
-        assertThrows(ToHighVatValueException.class, ()->{
-            vatService.getGrossPrise4GivenVat(product,BigDecimal.ONE);
-        });
+        vatService.getGrossPrise4GivenVat(product,BigDecimal.ONE);
     }
 
-
-    @BeforeEach
+    @BeforeMethod
     void setUp() {
         vatService = new VatService();
     }
