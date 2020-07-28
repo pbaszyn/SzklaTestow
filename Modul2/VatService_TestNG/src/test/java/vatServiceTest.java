@@ -1,3 +1,4 @@
+import org.mockito.Mockito;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -9,11 +10,13 @@ import static org.testng.Assert.assertEquals;
 public class vatServiceTest {
     private VatService vatService;
     private Product product;
+    private VatProvider vatProvider;
 
     @Test
     void shouldReturnGrossPriceWithDefaultVat() {
         //given
-        product = generateProduct("10");
+        product = generateProduct("10", "boots");
+        Mockito.when(vatProvider.getDefVat()).thenReturn(new BigDecimal("0.23"));
 
         //when
         BigDecimal result = vatService.getGrossPrice4DefVatValue(product);
@@ -25,38 +28,45 @@ public class vatServiceTest {
     @Test
     void shouldReturnGrossPrice4GivenVat() throws VatValueOutOfBounds {
         //given
-        product = generateProduct("20");
+        product = generateProduct("20", "clothes");
+        Mockito.when(vatProvider.getVat4ProductType(product.getType())).thenReturn(new BigDecimal("0.08"));
 
         //when
-        BigDecimal result = vatService.getGrossPrice4DefVatValue(product);
+        BigDecimal result = vatService.getGrossPrise4GivenVat(product);
 
         //then
-        assertEquals(new BigDecimal("21.60"),vatService.getGrossPrise4GivenVat(product,new BigDecimal("0.08")));
+        assertEquals(new BigDecimal("21.60"),vatService.getGrossPrise4GivenVat(product));
     }
 
     @Test(expectedExceptions = VatValueOutOfBounds.class)
     void shouldThrowExceptionWhenVATisEqualOrBiggerThanONE() throws VatValueOutOfBounds {
         //given
-        product = generateProduct("30");
+        product = generateProduct("30", "lamps");
+        Mockito.when(vatProvider.getVat4ProductType(product.getType())).thenReturn(new BigDecimal("1"));
+
 
         //then
-        vatService.getGrossPrise4GivenVat(product,BigDecimal.ONE);
+        vatService.getGrossPrise4GivenVat(product);
     }
 
     @Test(expectedExceptions = VatValueOutOfBounds.class)
     void shouldThrowExceptionWhenVATisLowerThanZERO() throws VatValueOutOfBounds {
         //given
-        product = generateProduct("30");
+        product = generateProduct("30", "lamps");
+        Mockito.when(vatProvider.getVat4ProductType(product.getType())).thenReturn(new BigDecimal("-0.5"));
+
 
         //then
-        vatService.getGrossPrise4GivenVat(product,new BigDecimal("-0.5"));
+        vatService.getGrossPrise4GivenVat(product);
     }
-    private Product generateProduct(String netPrice){
-        return new Product(UUID.randomUUID(),new BigDecimal(netPrice));
+
+    private Product generateProduct(String netPrice, String type){
+        return new Product(UUID.randomUUID(),new BigDecimal(netPrice),type);
     }
 
     @BeforeMethod
-    void setUp() {
-        vatService = new VatService();
+    private void setUpVatService() {
+        vatProvider = Mockito.mock(VatProvider.class);
+        vatService = new VatService(vatProvider);
     }
 }

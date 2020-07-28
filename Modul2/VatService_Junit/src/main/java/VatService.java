@@ -3,15 +3,21 @@ import java.math.MathContext;
 
 public class VatService {
 
-    private static final BigDecimal defVatValue = new BigDecimal("0.23");
     private static final MathContext m = new MathContext(4);
+    private VatProvider vatProvider;
+    private BigDecimal vatValue;
 
-
-    public BigDecimal getGrossPrice4DefVatValue(Product product) {
-        return getGrossPrice(product.getNetPrice(), defVatValue);
+    public VatService(VatProvider vatProvider){
+        this.vatProvider = vatProvider;
     }
 
-    public BigDecimal getGrossPrise4GivenVat(Product product, BigDecimal vatValue) throws VatValueOutOfBounds {
+    public BigDecimal getGrossPrice4DefVatValue(Product product) {
+        vatValue = vatProvider.getDefVat();
+        return getGrossPrice(product.getNetPrice(), vatValue);
+    }
+
+    public BigDecimal getGrossPrise4GivenVat(Product product) throws VatValueOutOfBounds {
+        vatValue = vatProvider.getVat4ProductType(product.getType());
         if ((vatValue.compareTo(BigDecimal.ONE) > -1) || (vatValue.compareTo(BigDecimal.ZERO) < 0)){
             throw new VatValueOutOfBounds("VAT Value:" + vatValue + "it's out of bounds");
         }
