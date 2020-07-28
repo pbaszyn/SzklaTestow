@@ -11,9 +11,9 @@ public class VatService {
         return getGrossPrice(product.getNetPrice(), defVatValue);
     }
 
-    public BigDecimal getGrossPrise4GivenVat(Product product, BigDecimal vatValue) throws ToHighVatValueException {
-        if (vatValue.compareTo(BigDecimal.ONE) == 0){
-            throw new ToHighVatValueException("VAT must be lower than 1",vatValue);
+    public BigDecimal getGrossPrise4GivenVat(Product product, BigDecimal vatValue) throws VatValueOutOfBounds {
+        if ((vatValue.compareTo(BigDecimal.ONE) > -1) || (vatValue.compareTo(BigDecimal.ZERO) < 0)){
+            throw new VatValueOutOfBounds("VAT Value:" + vatValue + "it's out of bounds");
         }
         return getGrossPrice(product.getNetPrice(), vatValue);
     }

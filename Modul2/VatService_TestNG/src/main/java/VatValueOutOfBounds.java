@@ -1,9 +1,9 @@
 import java.math.BigDecimal;
 
-public class ToHighVatValueException extends Throwable {
+public class VatValueOutOfBounds extends Throwable {
     private String message;
 
-    public ToHighVatValueException(String message, BigDecimal vatValue) {
+    public VatValueOutOfBounds(String message) {
         super(message);
     }
 

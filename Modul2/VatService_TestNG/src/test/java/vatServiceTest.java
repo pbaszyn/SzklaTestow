@@ -23,7 +23,7 @@ public class vatServiceTest {
     }
 
     @Test
-    void shouldReturnGrossPrice4GivenVat() throws ToHighVatValueException {
+    void shouldReturnGrossPrice4GivenVat() throws VatValueOutOfBounds {
         //given
         product = generateProduct("20");
 
@@ -34,13 +34,22 @@ public class vatServiceTest {
         assertEquals(new BigDecimal("21.60"),vatService.getGrossPrise4GivenVat(product,new BigDecimal("0.08")));
     }
 
-    @Test(expectedExceptions = ToHighVatValueException.class)
-    void shouldThrowExceptionWhenVATisEqualOrBiggerThanONE() throws ToHighVatValueException {
+    @Test(expectedExceptions = VatValueOutOfBounds.class)
+    void shouldThrowExceptionWhenVATisEqualOrBiggerThanONE() throws VatValueOutOfBounds {
         //given
-        product = generateProduct("20");
+        product = generateProduct("30");
 
         //then
         vatService.getGrossPrise4GivenVat(product,BigDecimal.ONE);
+    }
+
+    @Test(expectedExceptions = VatValueOutOfBounds.class)
+    void shouldThrowExceptionWhenVATisLowerThanZERO() throws VatValueOutOfBounds {
+        //given
+        product = generateProduct("30");
+
+        //then
+        vatService.getGrossPrise4GivenVat(product,new BigDecimal("-0.5"));
     }
     private Product generateProduct(String netPrice){
         return new Product(UUID.randomUUID(),new BigDecimal(netPrice));
