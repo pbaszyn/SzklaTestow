@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2020-07-28T17:12:03 CEST" name="Surefire suite" finished-at="2020-07-28T17:12:04 CEST" duration-ms="544">
+    <groups>
+    </groups>
+    <test started-at="2020-07-28T17:12:03 CEST" name="Surefire test" finished-at="2020-07-28T17:12:04 CEST" duration-ms="544">
+      <class name="vatServiceTest">
+        <test-method is-config="true" signature="setUpVatService()[pri:0, instance:vatServiceTest@7f416310]" started-at="2020-07-28T17:12:03 CEST" name="setUpVatService" finished-at="2020-07-28T17:12:04 CEST" duration-ms="499" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpVatService -->
+        <test-method signature="shouldReturnGrossPrice4GivenVat()[pri:0, instance:vatServiceTest@7f416310]" started-at="2020-07-28T17:12:04 CEST" name="shouldReturnGrossPrice4GivenVat" finished-at="2020-07-28T17:12:04 CEST" duration-ms="14" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldReturnGrossPrice4GivenVat -->
+        <test-method is-config="true" signature="setUpVatService()[pri:0, instance:vatServiceTest@7f416310]" started-at="2020-07-28T17:12:04 CEST" name="setUpVatService" finished-at="2020-07-28T17:12:04 CEST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpVatService -->
+        <test-method signature="shouldReturnGrossPriceWithDefaultVat()[pri:0, instance:vatServiceTest@7f416310]" started-at="2020-07-28T17:12:04 CEST" name="shouldReturnGrossPriceWithDefaultVat" finished-at="2020-07-28T17:12:04 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldReturnGrossPriceWithDefaultVat -->
+        <test-method is-config="true" signature="setUpVatService()[pri:0, instance:vatServiceTest@7f416310]" started-at="2020-07-28T17:12:04 CEST" name="setUpVatService" finished-at="2020-07-28T17:12:04 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpVatService -->
+        <test-method signature="shouldThrowExceptionWhenVATisEqualOrBiggerThanONE()[pri:0, instance:vatServiceTest@7f416310]" started-at="2020-07-28T17:12:04 CEST" name="shouldThrowExceptionWhenVATisEqualOrBiggerThanONE" finished-at="2020-07-28T17:12:04 CEST" duration-ms="5" status="PASS">
+          <exception class="VatValueOutOfBounds">
+            <full-stacktrace>
+              <![CDATA[VatValueOutOfBounds
+at VatService.getGrossPrise4GivenVat(VatService.java:22)
+at vatServiceTest.shouldThrowExceptionWhenVATisEqualOrBiggerThanONE(vatServiceTest.java:49)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:112)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+]]>
+            </full-stacktrace>
+          </exception> <!-- VatValueOutOfBounds -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldThrowExceptionWhenVATisEqualOrBiggerThanONE -->
+        <test-method is-config="true" signature="setUpVatService()[pri:0, instance:vatServiceTest@7f416310]" started-at="2020-07-28T17:12:04 CEST" name="setUpVatService" finished-at="2020-07-28T17:12:04 CEST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpVatService -->
+        <test-method signature="shouldThrowExceptionWhenVATisLowerThanZERO()[pri:0, instance:vatServiceTest@7f416310]" started-at="2020-07-28T17:12:04 CEST" name="shouldThrowExceptionWhenVATisLowerThanZERO" finished-at="2020-07-28T17:12:04 CEST" duration-ms="1" status="PASS">
+          <exception class="VatValueOutOfBounds">
+            <full-stacktrace>
+              <![CDATA[VatValueOutOfBounds
+at VatService.getGrossPrise4GivenVat(VatService.java:22)
+at vatServiceTest.shouldThrowExceptionWhenVATisLowerThanZERO(vatServiceTest.java:60)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:136)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:112)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:145)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+]]>
+            </full-stacktrace>
+          </exception> <!-- VatValueOutOfBounds -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldThrowExceptionWhenVATisLowerThanZERO -->
+      </class> <!-- vatServiceTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

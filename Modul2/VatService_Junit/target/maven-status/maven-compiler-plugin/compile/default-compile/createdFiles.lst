@@ -1,3 +1,4 @@
 Product.class
 VatService.class
-ToHighVatValueException.class
+VatValueOutOfBounds.class
+VatProvider.class

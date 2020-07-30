@@ -26,6 +26,8 @@ public class vatServiceTest {
 
         //then
         assertEquals(new BigDecimal("12.30"),result);
+        Mockito.verify(vatProvider, Mockito.times(1)).getDefVat();
+        Mockito.verify(vatProvider, Mockito.never()).getVat4ProductType(product.getType());
     }
 
     @Test
@@ -40,6 +42,7 @@ public class vatServiceTest {
 
         //then
         assertEquals(new BigDecimal("21.60"),vatService.getGrossPrise4GivenVat(product));
+        Mockito.verify(vatProvider, Mockito.atLeastOnce()).getVat4ProductType("clothes");
     }
 
     @Test
@@ -53,6 +56,8 @@ public class vatServiceTest {
         assertThrows(VatValueOutOfBounds.class, ()->{
             vatService.getGrossPrise4GivenVat(product);
         });
+        Mockito.verify(vatProvider, Mockito.atLeastOnce()).getVat4ProductType("lamps");
+
     }
 
     @Test
@@ -66,6 +71,7 @@ public class vatServiceTest {
         assertThrows(VatValueOutOfBounds.class, ()->{
             vatService.getGrossPrise4GivenVat(product);
         });
+        Mockito.verify(vatProvider, Mockito.atLeastOnce()).getVat4ProductType("lamps");
     }
 
     private Product generateProduct(String netPrice, String type){
