@@ -1,11 +1,23 @@
+import java.util.LinkedList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 
-    public String calculate(String numbers){
-
+    public String add(String numbers){
+        int result = 0;
         if (numbers.isBlank()) {
             return "0";
         }
-        return numbers;
+
+        LinkedList<String> ListOfNumbers = new LinkedList<>();
+        Pattern p = Pattern.compile("\\d+");
+        Matcher m = p.matcher(numbers);
+        while (m.find()){
+            result += Integer.parseInt(m.group());
+
+        }
+        return result + "";
 
     }
 }

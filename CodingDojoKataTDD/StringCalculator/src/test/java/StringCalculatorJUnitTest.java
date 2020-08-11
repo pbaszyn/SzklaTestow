@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,10 +10,10 @@ public class StringCalculatorJUnitTest {
         StringCalculator calculator = new StringCalculator();
 
         //when
-        String result = calculator.calculate("");
+        String result = calculator.add("");
 
         //then
-        assertEquals(result,"0");
+        assertEquals("0",result);
     }
 
     @Test
@@ -22,9 +21,21 @@ public class StringCalculatorJUnitTest {
         //given
         StringCalculator calculator = new StringCalculator();
         //when
-        String result = calculator.calculate("5");
+        String result = calculator.add("5");
 
         //then
-        assertEquals(result, "5");
+        assertEquals("5",result);
+    }
+
+    @Test
+    void shouldReturnSumOfTwoNumbersGiven() {
+        //given
+        StringCalculator calculator = new StringCalculator();
+
+        //when
+        String result = calculator.add("2,5");
+
+        //then
+        assertEquals("7",result);
     }
 }
