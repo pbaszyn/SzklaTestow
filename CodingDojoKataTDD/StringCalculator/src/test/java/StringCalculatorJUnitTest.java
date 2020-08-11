@@ -28,14 +28,14 @@ public class StringCalculatorJUnitTest {
     }
 
     @Test
-    void shouldReturnSumOfTwoNumbersGiven() {
+    void shouldReturnSumOfMultipleNumbersGiven() {
         //given
         StringCalculator calculator = new StringCalculator();
 
         //when
-        String result = calculator.add("2,5");
+        String result = calculator.add("2,5,10,30,15");
 
         //then
-        assertEquals("7",result);
+        assertEquals("62",result);
     }
 }
