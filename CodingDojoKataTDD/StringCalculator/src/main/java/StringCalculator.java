@@ -1,5 +1,11 @@
 public class StringCalculator {
+
     public String calculate(String numbers){
-        return "0";
+
+        if (numbers.isBlank()) {
+            return "0";
+        }
+        return numbers;
+
     }
 }
