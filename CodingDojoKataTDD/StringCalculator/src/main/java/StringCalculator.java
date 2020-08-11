@@ -5,17 +5,16 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
     public String add(String numbers){
-        int result = 0;
+        double result = 0.0;
         if (numbers.isBlank()) {
-            return "0";
+            return "0.0";
         }
 
-        LinkedList<String> ListOfNumbers = new LinkedList<>();
-        Pattern p = Pattern.compile("\\d+");
+        Pattern p = Pattern.compile("\\d+\\.\\d+|\\d+");
         Matcher m = p.matcher(numbers);
         while (m.find()){
-            result += Integer.parseInt(m.group());
-
+            result += Double.parseDouble(m.group());
+            System.out.println(m.group());
         }
         return result + "";
 

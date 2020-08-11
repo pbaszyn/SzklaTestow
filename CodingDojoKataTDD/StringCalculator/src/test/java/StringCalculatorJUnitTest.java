@@ -1,41 +1,35 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringCalculatorJUnitTest {
 
+    StringCalculator calculator;
+
     @Test
     public void shouldReturn0ForEmptyString() {
         //given
-        StringCalculator calculator = new StringCalculator();
 
         //when
         String result = calculator.add("");
 
         //then
-        assertEquals("0",result);
+        assertEquals("0.0",result);
     }
 
     @Test
-    void shouldReturnNumberForNumberGiven() {
+    void shouldReturnSumOfMultipleNumbersWithFractionPartGiven() {
         //given
-        StringCalculator calculator = new StringCalculator();
+
         //when
-        String result = calculator.add("5");
+        String result = calculator.add("2.5,5.3,10,30.7,15");
 
         //then
-        assertEquals("5",result);
+        assertEquals("63.5",result);
     }
 
-    @Test
-    void shouldReturnSumOfMultipleNumbersGiven() {
-        //given
-        StringCalculator calculator = new StringCalculator();
-
-        //when
-        String result = calculator.add("2,5,10,30,15");
-
-        //then
-        assertEquals("62",result);
+    @BeforeEach
+    void setUp() {
+        calculator = new StringCalculator();
     }
 }
