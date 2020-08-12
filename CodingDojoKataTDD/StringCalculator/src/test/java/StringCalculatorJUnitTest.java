@@ -18,7 +18,7 @@ public class StringCalculatorJUnitTest {
     }
 
     @Test
-    void shouldReturnSumOfMultipleNumbersWithFractionPartGiven() {
+    void shouldReturnSumOfMultipleNumbersWithFractionPartGiven(){
         //given
 
         //when
@@ -27,6 +27,18 @@ public class StringCalculatorJUnitTest {
         //then
         assertEquals("63.5",result);
     }
+
+    @Test
+    void shouldReturnMessageWhenDoubleSeparatingCharacterFound(){
+        //given
+
+        //when
+        String result = calculator.add("2.5,5.3,\n10,30.7,15");
+
+        //then
+        assertEquals("Number expected but '\\n' found at position 8.",result);
+    }
+
 
     @BeforeEach
     void setUp() {
