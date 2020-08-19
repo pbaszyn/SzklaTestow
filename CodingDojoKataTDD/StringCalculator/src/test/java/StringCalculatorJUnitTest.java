@@ -60,6 +60,29 @@ public class StringCalculatorJUnitTest {
         assertEquals("Number expected but EOF found",result);
     }
 
+    @Test
+    void shouldReturnSumOfGivenNumbersSeparatedByDifferentSeparators() {
+        //given
+
+        //when
+        String result  = calculator.add("2.5,5.5;10|2 5");
+
+        //then
+        assertEquals("25.0",result);
+    }
+
+    @Test
+    void shouldReturnMessageWhenNegativeNumbersGiven() {
+        //given
+
+        //when
+        String result  = calculator.add("-5,-5.2;10|2 5");
+
+        //then
+        assertEquals("Negative not allowed : -5, -5.2",result);
+
+    }
+
     @BeforeEach
     void setUp() {
         calculator = new StringCalculator();
