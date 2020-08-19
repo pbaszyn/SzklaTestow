@@ -6,17 +6,28 @@ public class StringCalculator {
 
     public String add(String numbers) {
         double result = 0.0;
+        int stringNumbersIndex;
+                ;
         if (numbers.isBlank()) {
             return "0.0";
         }
 
-        Pattern p_ = Pattern.compile(",\\n|\\n,");
-        Matcher m_ = p_.matcher(numbers);
-        while (m_.find()){
 
-            String message = "Number expected but '\\n' found at position " + (m_.start()+1) + ".";
-            return message;
+        stringNumbersIndex = illegalSeparatorFound(",\\n", numbers);
+        if (stringNumbersIndex > -1){
+            return "Number expected but '\\n' found at position " + (stringNumbersIndex+1) + ".";
 
+        }
+
+        stringNumbersIndex = illegalSeparatorFound("\\n,", numbers);
+        if (stringNumbersIndex > -1){
+            return "Number expected but ',' found at position " + (stringNumbersIndex+1) + ".";
+
+        }
+
+        stringNumbersIndex = illegalSeparatorFound(",$", numbers);
+        if (stringNumbersIndex > -1){
+            return "Number expected but EOF found";
 
         }
 
@@ -27,6 +38,15 @@ public class StringCalculator {
             System.out.println(m.group());
         }
         return result + "";
+    }
 
+    private int illegalSeparatorFound(String pattern, String numbers){
+
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(numbers);
+        while (m.find()){
+            return m.start();
+        }
+        return -1;
     }
 }

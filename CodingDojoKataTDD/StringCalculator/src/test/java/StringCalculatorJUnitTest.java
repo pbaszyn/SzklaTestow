@@ -38,7 +38,27 @@ public class StringCalculatorJUnitTest {
         //then
         assertEquals("Number expected but '\\n' found at position 8.",result);
     }
+    @Test
+    void shouldReturnMessageWhenDoubleSeparatingCharacterFoundRevert(){
+        //given
 
+        //when
+        String result = calculator.add("2.5,5.3,10,30.7\n,15");
+
+        //then
+        assertEquals("Number expected but ',' found at position 16.",result);
+    }
+
+    @Test
+    void shouldReturnMessageOnMissingNumberInLastPosition() {
+        //given
+
+        //when
+        String result  = calculator.add("2.5,5.3,10,30.7,");
+
+        //then
+        assertEquals("Number expected but EOF found",result);
+    }
 
     @BeforeEach
     void setUp() {
