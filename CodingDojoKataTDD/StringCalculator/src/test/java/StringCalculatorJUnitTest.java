@@ -83,6 +83,26 @@ public class StringCalculatorJUnitTest {
 
     }
 
+    @Test
+    void shouldReturnSumWhenCustomSeparatorIsSpecified() {
+        //given
+
+        String result = calculator.add("//;\n2.5;5.3;10;30.7;15.5");
+
+        //then
+        assertEquals("64.0",result);
+    }
+
+    @Test
+    void shouldReturnErrorMessageWhenCustomSeparatorIsSpecifiedButWrongFind() {
+        //given
+
+        String result = calculator.add("//;\n2.5;5.3;10,30.7;15.5");
+
+        //then
+        assertEquals("; expected but ',' found at position 14.",result);
+    }
+
     @BeforeEach
     void setUp() {
         calculator = new StringCalculator();
