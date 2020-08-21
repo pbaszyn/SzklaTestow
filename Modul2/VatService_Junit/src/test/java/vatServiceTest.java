@@ -3,8 +3,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import javax.annotation.processing.Messager;
 import java.math.BigDecimal;
 import java.util.UUID;
+import java.util.logging.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -13,6 +15,8 @@ public class vatServiceTest {
     private VatService vatService;
     private Product product;
     private VatProvider vatProvider;
+    private Logger logger;
+
 
     @Test
     @DisplayName("Should return gross price for default VAT value")
@@ -26,8 +30,9 @@ public class vatServiceTest {
 
         //then
         assertEquals(new BigDecimal("12.30"),result);
-        Mockito.verify(vatProvider, Mockito.times(1)).getDefVat();
-        Mockito.verify(vatProvider, Mockito.never()).getVat4ProductType(product.getType());
+        Mockito.verify(vatProvider).getDefVat();
+        Mockito.verify(vatProvider, Mockito.never()).getVat4ProductType("Any type");
+        Mockito.verify(vatService, Mockito.times(1)).getGrossPrice4DefVatValue(product);
     }
 
     @Test
@@ -57,6 +62,7 @@ public class vatServiceTest {
             vatService.getGrossPrise4GivenVat(product);
         });
         Mockito.verify(vatProvider, Mockito.atLeastOnce()).getVat4ProductType("lamps");
+
 
     }
 

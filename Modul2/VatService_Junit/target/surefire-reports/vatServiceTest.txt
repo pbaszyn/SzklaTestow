@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: vatServiceTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.409 s - in vatServiceTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.461 s - in vatServiceTest
